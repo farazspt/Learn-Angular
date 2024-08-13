@@ -1,0 +1,44 @@
+<div class="container m-5">
+  <h3>{{employee.firstName}} {{employee.lastName}}'s Profile Details</h3>
+  <table class="table table-borderless mt-5 emp-details">
+    <tbody>
+      <tr>
+        <td><label class="form-text-label">Username</label></td>
+        <td>{{employee.username}}</td>
+      </tr>
+      <tr>
+        <td><label>First Name</label></td>
+        <td>{{employee.firstName}}</td>
+      </tr>
+      <tr>
+        <td><label>Last Name</label></td>
+        <td>{{employee.lastName}}</td>
+      </tr>
+      <tr>
+        <td><label>E-mail</label></td>
+        <td>{{employee.email}}</td>
+      </tr>
+      <tr>
+        <td><label>Birth Date</label></td>
+        <td>{{employee.birthDate | date: 'dd MMMM yyyy'}}</td>
+      </tr>
+      <tr>
+        <td><label>Basic Sallary</label></td>
+        <td>{{employee.basicSalary | currency: 'Rp ' : 'code' : '1.0'}}</td>
+      </tr>
+      <tr>
+        <td><label>Status</label></td>
+        <td>{{employee.status? 'Active':'Inactive' }}</td>
+      </tr>
+      <tr>
+        <td><label>Group</label></td>
+        <td>{{employee.group}}</td>
+      </tr>
+      <tr>
+        <td><label>Description</label></td>
+        <td>{{employee.description}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary mt-4" [routerLink]="['/employee']">Back To Employee</button>
+</div>

@@ -1,0 +1,32 @@
+.btn {
+  margin: 0 5px;
+}
+
+.emp-list tbody tr td {
+  padding: 10px 0;
+}
+
+thead td {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+thead td:hover {
+  background-color: darkgrey;
+}
+
+.page-item {
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: darkgrey;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.input-group-text {
+  cursor: default;
+}

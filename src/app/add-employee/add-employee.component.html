@@ -1,0 +1,89 @@
+<div class="d-block center m-5 w-50">
+  <h3>Add Employee</h3>
+  <form class="mt-5" [formGroup]="formGroup" (submit)="submitForm()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" placeholder="Input Username" formControlName="username"
+        required>
+      <p class="alert alert-danger"
+        *ngIf="formGroup.controls['username'].touched && !formGroup.controls['username'].valid">Username is required</p>
+    </div>
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" name="firstName" class="form-control" placeholder="Input your First Name"
+          formControlName="firstName" required>
+        <p class="alert alert-danger"
+          *ngIf="formGroup.controls['firstName'].touched && !formGroup.controls['firstName'].valid">First Name is
+          required</p>
+      </div>
+      <div class="mb-3 col">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" name="lastName" class="form-control" placeholder="Input your Last Name"
+          formControlName="lastName" required>
+        <p class="alert alert-danger"
+          *ngIf="formGroup.controls['lastName'].touched && !formGroup.controls['lastName'].valid">Last Name is required
+        </p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" name="email" class="form-control" placeholder="example@example.com" formControlName="email"
+        required>
+      <div class="alert alert-danger" *ngIf="formGroup.controls['email'].touched && !formGroup.controls['email'].valid">
+        <p *ngIf="formGroup.controls['email'].errors?.['required']">E-mail is required</p>
+        <p *ngIf="formGroup.controls['email'].errors?.['email']">E-mail type is not correct</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="birthdate" class="form-label">Birthdate</label>
+      <input type="date" id="birthdate" name="birthdate" class="form-control w-50" [max]="setMaxDate()"
+        formControlName="birthdate" required>
+      <p class="alert alert-danger"
+        *ngIf="formGroup.controls['birthdate'].touched && !formGroup.controls['birthdate'].valid">Birthdate is required
+      </p>
+      <a (click)="cetaktanggal()">cetak</a>
+    </div>
+
+    <div class="mb-3">
+      <label for="basicSallary" class="form-label">Basic Sallary</label>
+      <input type="number" name="basicSallary" class="form-control w-50" formControlName="basicSallary" min="1"
+        required>
+      <p class="alert alert-danger"
+        *ngIf="formGroup.controls['basicSallary'].touched && !formGroup.controls['basicSallary'].valid">Basic Sallary is
+        required
+      </p>
+    </div>
+    <div class="row">
+      <div class="col mb-3">
+        <label>Status</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="status" value="1" required>
+          <label class="form-check-label" for="status">
+            Active
+          </label>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label class="form-label">Group</label><br>
+        <select class="form-select w-75" name="group" id="group" formControlName="group" required>
+          <option value="">choose...</option>
+          <option *ngFor=" let group of groups" [value]="group">{{group}}</option>
+        </select>
+        <p class="alert alert-danger" *ngIf="formGroup.controls['group'].touched && !formGroup.controls['group'].valid">
+          Group is required
+        </p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" name="description" rows="3" formControlName="description" required></textarea>
+      <p class="alert alert-danger"
+        *ngIf="formGroup.controls['description'].touched && !formGroup.controls['description'].valid">Description is
+        required
+      </p>
+    </div>
+    <button class=" w-100 btn btn-primary btn-lg" type="submit" [disabled]="formGroup.invalid">Save</button>
+    <button class=" w-100 btn btn-danger mt-2 btn-lg" [routerLink]="['/employee']">Cancel</button>
+  </form>
+</div>
